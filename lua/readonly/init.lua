@@ -37,8 +37,14 @@ function gm_readonly.SetupBasicMetas(Group)
 		if List[self] then
 			error("Tried to modify a read only value")
 			return
-		else
+		end
+
+		if istable(Original) then
+			return rawset(Original, Key, Value)
+		elseif isfunction(Original) then
 			return Original(self, Key, Value)
+		else
+			return nil
 		end
 	end)
 
@@ -65,9 +71,9 @@ end
 function gm_readonly.GetMethod(MetaTable, MethodName)
 	local MetaMethod = rawget(MetaTable, MethodName)
 
-	if not isfunction(MetaMethod) then
+	if MetaMethod == nil then
 		-- error(Format("Couldn't find method '%s'", MethodName))
-		MsgN(Format("Couldn't find method '%s'", MethodName))
+		MsgN(Format("Couldn't find method '%s' in '%s'", MethodName, MetaTable.MetaName or "UNK"))
 		return gm_readonly.NoOp -- Don't die just in case we want to force detour something (like __gc)
 	end
 
