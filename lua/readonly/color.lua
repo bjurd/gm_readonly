@@ -18,7 +18,7 @@ function MetaTable:MarkReadOnly(State)
 		DataTable.b = self.b
 		DataTable.a = self.a
 
-		rawset(self, "r", nil)
+		rawset(self, "r", nil) -- Force __index calls
 		rawset(self, "g", nil)
 		rawset(self, "b", nil)
 		rawset(self, "a", nil)
