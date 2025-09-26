@@ -27,7 +27,7 @@ function gm_readonly.SetupBasicMetas(Group)
 	local MetaTable = Group.MetaTable
 	local List = Group.List
 
-	--[[
+	--[[ Not necessary
 	gm_readonly.BasicDetour(Group, "__index", function(self, Original, Key)
 		return rawget(MetaTable, Key) or Original(self, Key)
 	end)
@@ -42,6 +42,7 @@ function gm_readonly.SetupBasicMetas(Group)
 		end
 	end)
 
+	--[[ Not necessary because the list is weak
 	gm_readonly.BasicDetour(Group, "__gc", function(self, Original)
 		if List[self] then
 			List[self] = nil
@@ -49,6 +50,7 @@ function gm_readonly.SetupBasicMetas(Group)
 
 		return Original(self)
 	end)
+	--]]
 
 	MetaTable.MarkReadOnly = function(self, State)
 		List[self] = Either(tobool(State), true, nil)
