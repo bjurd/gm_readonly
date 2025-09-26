@@ -10,7 +10,7 @@ function MetaTable:MarkReadOnly(State)
 
 	if not State then
 		List[self] = nil
-	else
+	elseif not List[self] then
 		local DataTable = {} -- Colors are just tables in disguise so we must proxy their values
 
 		DataTable.r = self.r
