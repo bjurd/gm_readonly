@@ -57,7 +57,7 @@ function gm_readonly.SetupBasicMetas(Group)
 	end
 
 	MetaTable.IsReadOnly = function(self)
-		return List[self] == true
+		return List[self] ~= nil
 	end
 end
 
