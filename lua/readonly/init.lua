@@ -114,6 +114,10 @@ end
 -- Basic stuff
 include("vector.lua")
 include("angle.lua")
+include("color.lua")
 
 vector_origin:MarkReadOnly(true)
 angle_zero:MarkReadOnly(true)
+color_white:MarkReadOnly(true)
+color_black:MarkReadOnly(true)
+color_transparent:MarkReadOnly(true)
