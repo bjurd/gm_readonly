@@ -67,7 +67,6 @@ function gm_readonly.SetupBasicMetas(Group)
 	end
 end
 
--- These functions should use metatable instead of object passthrough but ehhhhhhhhhhhhh
 function gm_readonly.GetMethod(MetaTable, MethodName)
 	local MetaMethod = rawget(MetaTable, MethodName)
 
