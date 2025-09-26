@@ -73,7 +73,7 @@ function gm_readonly.GetMethod(MetaTable, MethodName)
 
 	if MetaMethod == nil then
 		-- error(Format("Couldn't find method '%s'", MethodName))
-		MsgN(Format("Couldn't find method '%s' in '%s'", MethodName, MetaTable.MetaName or "UNK"))
+		-- MsgN(Format("Couldn't find method '%s' in '%s'", MethodName, MetaTable.MetaName or "UNK"))
 		return gm_readonly.NoOp -- Don't die just in case we want to force detour something (like __gc)
 	end
 
