@@ -51,7 +51,9 @@ end)
 
 gm_readonly.BasicDetour(ColorGroup, "__newindex", function(self, Original, Key, Value)
 	if List[self] then
-		if Key == "r" or Key == "g" or Key == "b" or Key == "a" then
+		local DataTable = List[self]
+
+		if DataTable[Key] then
 			error("Tried to modify a read only value")
 			return
 		end
