@@ -59,13 +59,17 @@ gm_readonly.BasicDetour(ColorGroup, "__newindex", function(self, Original, Key, 
 		end
 	end
 
-	if istable(Original) then
-		return rawset(Original, Key, Value)
-	elseif isfunction(Original) then
-		return Original(self, Key, Value)
-	else
-		return nil
-	end
+	-- Something's wack here, there shouldn't be an original but it still acts like there is
+
+	-- if istable(Original) then
+	-- 	return rawset(Original, Key, Value)
+	-- elseif isfunction(Original) then
+	-- 	return Original(self, Key, Value)
+	-- else
+	-- 	return nil
+	-- end
+
+	rawset(self, Key, Value)
 end)
 
 gm_readonly.BlockingDetour(ColorGroup, "AddBlackness")
